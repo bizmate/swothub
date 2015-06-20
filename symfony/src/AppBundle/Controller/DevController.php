@@ -26,4 +26,19 @@ class DevController extends Controller
         );
     }
 
+    /**
+     * @Route("/news/{text}")
+     * @Template()
+     */
+    public function getIdolNewsAction($text)
+    {
+        $competitors = new Competitors();
+
+        $news = $competitors->getNews($text);
+
+        return array(
+            'news' => $news
+        );
+    }
+
 }

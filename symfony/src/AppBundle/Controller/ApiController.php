@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use AppBundle\Model\Competitors;
+
 
 class ApiController extends FOSRestController
 {
@@ -21,22 +23,21 @@ class ApiController extends FOSRestController
     {
         $items = array('bla1', 'bla2', $url);
 
-        //var_dump($items);die;
-
-        //var_dump($this->view($items, 200));
         if(count($items) == 0)
             throw $this->createNotFoundException('No items found');
 
-        /* $view = $this->view($items, 200)
-            ->setTemplate("BizmateWiisBundle:Api:getItems.html.twig")
-            ->setTemplateVar('items')
-        ;
-        //var_dump($view);die;
-
-        $return = $this->handleView($view);
-        //var_dump($return);
-        return $return; */
 
         return $items;
     }
+
+    public function getNewsAction($text)
+    {
+        $competitors = new Competitors();
+
+        $news = $competitors->getNews($text);
+
+        return $news;
+    }
+
+
 }
