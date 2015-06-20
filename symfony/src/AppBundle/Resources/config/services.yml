@@ -1,0 +1,7 @@
+parameters:
+#    bizmate_wiis.example.class: Bizmate\Bundle\WiisBundle\Example
+
+services:
+#    bizmate_wiis.example:
+#        class: %bizmate_wiis.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

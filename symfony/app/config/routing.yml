@@ -1,8 +1,10 @@
-acme_blog:
-    resource: "@AcmeBlogBundle/Controller/"
-    type:     annotation
-    prefix:   /
+#acme_blog:
+#    resource: "@AcmeBlogBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
 
 app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
