@@ -13,8 +13,9 @@ class ApiController extends FOSRestController
     /**
      * @param $url
      * @return array
-     * @description - path resource on  get_competitors  GET   /api/competitors/{url}.{_format}
      */
+     //@desc - path resource on  get_competitors  GET   /api/competitors/{url}.{_format}
+
 
     public function getCompetitorsAction($url)
     {
