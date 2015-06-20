@@ -1,0 +1,4 @@
+swothub_dev :
+    resource: "@AppBundle/Controller"
+    type:  annotation
+    prefix:   /
