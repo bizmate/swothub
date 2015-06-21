@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use FOS\RestBundle\Controller\FOSRestController;
-use AppBundle\Model\Competitors;
 use AppBundle\Model\News;
 
 
@@ -35,6 +34,12 @@ class ApiController extends FOSRestController
     {
         $news = new News();
         return $news->getNews($text);
+    }
+
+    public function getNewsTotalAction($text, $total)
+    {
+        $news = new News();
+        return $news->getNews($text, $total);
     }
 
 
