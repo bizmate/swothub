@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Acme\Bundle\BlogBundle\AcmeBlogBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
 
         );
 
