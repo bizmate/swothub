@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Model\Competitors;
+use AppBundle\Model\CpsAdapter;
 
 
 
@@ -38,6 +39,21 @@ class DevController extends Controller
 
         return array(
             'news' => $news
+        );
+    }
+
+    /**
+     * @Route("/insertcp")
+     * @Template()
+     */
+    public function insertCpAction()
+    {
+        $csp = new CpsAdapter();
+
+        $result = $csp->insertSearch('id', array('something'=>'withsomething'));
+
+        return array(
+            'result' => $result
         );
     }
 
