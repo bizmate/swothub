@@ -1,9 +1,8 @@
 <?php
 
 namespace AppBundle\Model;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Doctrine\Common\Cache\FilesystemCache;
 
+use Doctrine\Common\Cache\FilesystemCache;
 
 
 class SabreOath2 {
@@ -16,15 +15,11 @@ class SabreOath2 {
 
     const CACHE_KEY = "sabreOath2";
 
-    private $container;
     private $cache;
 
     public function __construct(FilesystemCache $cache)
     {
-        //$this->container = $container;
-        //$this->cache = $this->container->get('cache');
         $this->cache = $cache;
-
     }
 
     private function getAccessToken()

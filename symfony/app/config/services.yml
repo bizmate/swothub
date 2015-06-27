@@ -11,3 +11,6 @@ services:
     cache:
         class: Doctrine\Common\Cache\FilesystemCache
         arguments:    ["%kernel.root_dir%/cache/doctrine"]
+    sabreauth:
+        class: AppBundle\Model\SabreOath2
+        arguments:    ["@cache"]

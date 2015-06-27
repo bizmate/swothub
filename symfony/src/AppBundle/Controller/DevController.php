@@ -73,4 +73,19 @@ class DevController extends Controller
         );
     }
 
+    /**
+     * @Route("/oathsabretest2")
+     * @Template()
+     */
+    public function oathsabre2Action()
+    {
+        $client = $this->container->get('sabreauth');
+
+        $result = $client->getApiKey();
+
+        return array(
+            'result' => $result
+        );
+    }
+
 }
