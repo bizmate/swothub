@@ -42,5 +42,10 @@ class ApiController extends FOSRestController
         return $news->getNews($text, $total);
     }
 
+    public function getLocationStartdateEnddateAction($location, $startdate, $enddate)
+    {
+        return array('location' => $location, 'startdate'=>$startdate, 'enddate'=>$enddate);
+    }
+
 
 }
