@@ -3,7 +3,11 @@
 parameters:
 #    parameter_name: value
 
-services:
+#services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+services:
+    cache:
+        class: Doctrine\Common\Cache\FilesystemCache
+        arguments:    ["%kernel.root_dir%/cache/doctrine"]
