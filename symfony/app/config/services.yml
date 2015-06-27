@@ -14,3 +14,6 @@ services:
     sabreauth:
         class: AppBundle\Model\SabreOath2
         arguments:    ["@cache"]
+    sabre:
+        class: AppBundle\Model\Sabre
+        arguments:    ["@sabreauth"]

@@ -42,9 +42,19 @@ class ApiController extends FOSRestController
         return $news->getNews($text, $total);
     }
 
-    public function getLocationStartdateEnddateAction($location, $startdate, $enddate)
+    public function getToFromStartdateEnddateAction($to, $from, $startdate, $enddate)
     {
-        return array('location' => $location, 'startdate'=>$startdate, 'enddate'=>$enddate);
+        $sabreClient = $this->container->get('sabre');
+
+        $response = array(
+            'itineraries' => null ,
+            'hotels' => null,
+            'localoffers' => null
+        );
+
+        //$itineraries = $sabreClient->getItinerary($to, $from, $startdate, $enddate);
+
+        return $response ;
     }
 
 
