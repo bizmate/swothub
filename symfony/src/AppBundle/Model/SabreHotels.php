@@ -21,7 +21,19 @@ class SabreHotels {
 
         $response = $this->getClient()->get($url);
 
-        $hotels = json_decode($response->getBody());
+        $hotelsRes = json_decode($response->getBody());
+
+        $hotels = [];
+
+        foreach($hotelsRes as $hotelRes){
+            $hotels[] = [
+                'hotelCode' => $hotelRes->hotelCode,
+                'hotelCityCode' => $hotelRes->hotelCityCode,
+                'hotelName' => $hotelRes->hotelName,
+                'price'=> $hotelRes->lowestAvailableRate,
+                'starRating'=> $hotelRes->starRating,
+            ];
+        }
 
         return $hotels;
     }

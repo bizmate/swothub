@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\FOSRestController;
 use AppBundle\Model\News;
 use AppBundle\Model\ItineraryResponse;
+use AppBundle\Model\SabreHotels;
 
 
 class ApiController extends FOSRestController
@@ -50,10 +51,13 @@ class ApiController extends FOSRestController
 
         $itineraries = $sabreClient->getItinerary($to, $from, $startdate, $enddate);
 
+        $hotelsClient = new SabreHotels();
+        $hotels = $hotelsClient->getHotels($to, $startdate, $enddate);
+
         $destination = $sabreClient->resolveCityName($to);
         $activities = $gyg->tours(['location' => $destination]);
 
-        return new ItineraryResponse($itineraries, null, $activities);
+        return new ItineraryResponse($itineraries, $hotels, $activities);
     }
 
     public function getCitytoursAction($cityname)
