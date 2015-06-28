@@ -63,11 +63,12 @@ class Sabre {
                     }
 
                 }
-                //echo json_encode($itinerary->AirItineraryPricingInfo->PTC_FareBreakdowns->PTC_FareBreakdown);die;
+                //echo json_encode($itinerary->AirItineraryPricingInfo->PTC_FareBreakdowns->PTC_FareBreakdown->PassengerFare->TotalFare);die;
 
                 $itn[] = [
-                    'total' => $itinerary->AirItineraryPricingInfo->PTC_FareBreakdowns->PTC_FareBreakdown->PassengerFare->TotalFare,
-                    'type' => $itinerary->AirItinerary->DirectionInd,
+                    'total' => $itinerary->AirItineraryPricingInfo->PTC_FareBreakdowns->PTC_FareBreakdown->PassengerFare->TotalFare->Amount ,
+                    'curr' => $itinerary->AirItineraryPricingInfo->PTC_FareBreakdowns->PTC_FareBreakdown->PassengerFare->TotalFare->CurrencyCode ,
+                    'type' => $itinerary->AirItinerary->DirectionInd ,
                     'fragments' => $fragments
                 ];
             }
