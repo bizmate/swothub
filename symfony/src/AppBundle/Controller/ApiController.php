@@ -11,6 +11,7 @@ use AppBundle\Model\News;
 use AppBundle\Model\ItineraryResponse;
 use AppBundle\Model\SabreHotels;
 use AppBundle\Model\TwilioAdapter;
+use AppBundle\Model\Bitly;
 
 
 class ApiController extends FOSRestController
@@ -80,19 +81,28 @@ class ApiController extends FOSRestController
         return $sabreClient->resolveCityName($airportCode);
     }
 
-    public function postSmsAction($phoneNumber)
+    public function postSmsBudgetStartEndDestinationAction($phoneNumber, $budget, $start, $end, $destination)
     {
         $mobilePattern = '447\d\d\d\d\d\d\d\d';
+
+        //maverick.html?budget=500&start=2015-06-28&end=2015-07-10&destination=FCO
+
+        $bitlyClient = new Bitly();
+
+        $longUrl = 'http://destination.bizmate.space/maverick.html?budget=' . $budget
+            .'&start=' . $start . '&end=' . $end . '&destination='. $destination;
+
+        $shortUrl = $bitlyClient->getShortUrl($longUrl);
 
         $result = null;
 
         //echo $phoneNumber . ' -> ' . preg_match( $mobilePattern , '+'  .$phoneNumber); die;
 
         //if(preg_match( $mobilePattern , '+'  .$phoneNumber) )
-            if(true )
+        if(true )
         {
             $twilioClient = new TwilioAdapter();
-            $result = $twilioClient->sendMsg('+'  .$phoneNumber) ;
+            $result = $twilioClient->sendMsg('+'  .$phoneNumber , $shortUrl) ;
         }
 
         return array(

@@ -24,9 +24,11 @@ class TwilioAdapter {
 
     public function sendMsg(
         $to,
-        $msg = 'Hello from Maverick. Why dont you check our travel experiences at www.Maverick.com'
+        $msgUrl = 'http://bit.ly/1ICN4Df'
     )
     {
+        $msg = 'Hello from Maverick. Your friend Jon shared this trip with you ' . $msgUrl . ' :)';
+
         $message = $this->twilioService->account->messages->sendMessage(
             self::TWILIO_NUM, // From a valid Twilio number
             $to, // Text this number
