@@ -1,0 +1,123 @@
+<!doctype html>
+<html ng-app="flightApp">
+<head>
+  <base href="/destinationhack/" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <link rel="stylesheet" href="./css/bootstrap-datepicker.min.css">
+
+  <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css" rel="stylesheet">
+
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+  html {
+    height: 100%;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+  }
+  .row {
+    margin-right: 0;
+  }
+  /*
+  .navigation-row {
+padding: 0.3em 0;
+margin-left: 2%;
+margin-top: 0.5%;
+  }
+  .navigation-container {
+    margin-left: 1em;
+    padding-left: 1.8%;
+  }
+  .navigation-container  span {
+    height: 1em;
+    border-radius: 50%;
+    font-size: -webkit-xxx-large;
+color: rgba(255, 255, 255, 1);
+  }*/
+  .form-container {
+    background-color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+  .image-container {
+        height: 33%;
+    background-image: url('images/destination/berlin.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-bottom: solid 1px;
+border-color: lightgray;
+  }
+  .input-daterange {
+    margin-top: 20%;
+  }
+  form {
+    text-align: center;
+  }
+  .submit-btn {
+    margin-top: 30%;
+  }
+  </style>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+  <script src="flight.js"></script>
+</head>
+
+<body>
+  <div class="row image-container">
+  <div class="row navigation-row">
+    <div class="col-xs-1 navigation-container">
+            <a href="maverick.html">
+    <span class="mdi-navigation-arrow-back">
+    </span>
+    </a>
+  </div>
+  </div>
+</div>
+<div class="row"  ng-controller='flightController as flights'>
+  <div class="col-xs-12">
+    <div class="sample2" ng-repeat="itinery in flights.itineraries">
+  <div class="radio radio-primary">
+    <label>
+      <input type="radio" name="sample2" value="option1" checked="">
+      {{itinery.total}}
+    </label>
+  </div>
+</div>
+  </div>
+</div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    // This command is used to initialize some elements and make them work properly
+    $.material.init();
+  });
+  </script>
+
+  <script>
+  $('.input-daterange').datepicker({
+    autoclose: true
+  });
+  //$('#start').val(new Date().toString('MM/dd/yyyy'));
+  //$('#end').val(new Date.today().add(5).day().toString('MM/dd/yyyy'));
+  </script>
+</body>
+</html>
