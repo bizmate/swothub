@@ -33,9 +33,10 @@
     background-color: white;
     padding-top: 5%;
     padding-bottom: 5%;
+    border-radius: 1%;
   }
   .row {
-    padding-top: 50%;
+    padding-top: 20%;
     margin-right: 0;
   }
   .input-daterange {
@@ -45,7 +46,7 @@
     text-align: center;
   }
   .submit-btn {
-    margin-top: 30%;
+    margin-top: 20%;
   }
   </style>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -53,12 +54,16 @@
 
 <body>
   <div class="row">
+    <img src="images/maverick_logo.png" style="width: 80%;margin-left: 10%;padding-top:0;position:relative;">
+  </div>
+  <div class="row">
     <div class="col-xs-8 col-xs-offset-2 shadow-z-2 form-container shadow-z-5">
       <form method="get" action="maverick.html">
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">&pound;</span>
           <input type="text" class="form-control" name="budget" placeholder="Your Budget" aria-describedby="basic-addon1">
         </div>
+        <input type="text" class="form-control" name="destination" placeholder="Dream Destination" aria-describedby="basic-addon1" style="margin-top: 15%;">
         <div class="input-daterange input-group" id="datepicker">
           <input type="text" class="input-sm form-control" name="start" id="start" placeholder="start"/>
           <span class="input-group-addon">to</span>

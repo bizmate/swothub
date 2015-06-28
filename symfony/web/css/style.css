@@ -13,3 +13,33 @@ margin-top: 0.5%;
   font-size: -webkit-xxx-large;
 color: rgba(255, 255, 255, 1);
 }
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
+    -webkit-device-pixel-ratio: 3;
+}
+
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : landscape) {
+    -webkit-device-pixel-ratio: 3;
+}
+
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {
+    -webkit-device-pixel-ratio: 3;
+}
+
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : landscape) {
+    -webkit-device-pixel-ratio: 3;
+}
+
+@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px){
+    -webkit-device-pixel-ratio: 3;
+}
+
+@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) and (orientation : portrait){
+    -webkit-device-pixel-ratio: 3;
+}
+
+@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) and (orientation : landscape){
+    -webkit-device-pixel-ratio: 3;
+}
