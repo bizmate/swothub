@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	{% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
+	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+
+	<-- <link rel="stylesheet" href="./css/bootstrap-datepicker.min.css"> -->
+
+	<!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css" rel="stylesheet">
+	<style>
+		html {
+			height: 100%;
+			font-size: 100%;
+		}
+		body {
+			font-family: 'Roboto', sans-serif;
+			height: 100%;
+			background-image: url('images/mainscreen.jpg');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+
+		}
+		.form-container {
+			background-color: white;
+			padding-top: 5%;
+			padding-bottom: 5%;
+		}
+		.row {
+			padding-top: 50%;
+			margin-right: 0;
+		}
+		.input-daterange {
+			margin-top: 20%;
+		}
+		form {
+			text-align: center;
+		}
+		.submit-btn {
+			margin-top: 30%;
+		}
+	</style>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class="row">
+	<div class="col-xs-8 col-xs-offset-2 shadow-z-2 form-container shadow-z-5">
+		<form>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">&pound;</span>
+				<input type="text" class="form-control" placeholder="Your Budget" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-daterange input-group" id="datepicker">
+				<input type="text" class="input-sm form-control" name="start" id="start" placeholder="start"/>
+				<span class="input-group-addon">to</span>
+				<input type="text" class="input-sm form-control" name="end" id="end" placeholder="end"/>
+			</div>
+			<a href="maverick.html" class="btn-material-light-blue submit-btn">
+				<button type="submit" class="btn btn-material-light-blue submit-btn shadow-z-2">Start exploring</button>
+			</a>
+		</form>
+	</div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+<script>
+	$(document).ready(function() {
+		// This command is used to initialize some elements and make them work properly
+		$.material.init();
+	});
+</script>
+
+<script>
+	$('.input-daterange').datepicker({
+		autoclose: true
+	});
+	//$('#start').val(new Date().toString('MM/dd/yyyy'));
+	//$('#end').val(new Date.today().add(5).day().toString('MM/dd/yyyy'));
+</script>
+</body>
+</html>
