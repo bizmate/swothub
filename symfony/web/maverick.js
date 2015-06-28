@@ -15,10 +15,10 @@ app.controller('MaverickController', function($scope, $http, $location) {
   var budget = $location.search()['budget']
   var startdates = $location.search()['start']
   var enddates = $location.search()['end']
-  $http.get('http://destination.bizmate.space/api/tos/'+maverick.destinations[0].code+'/froms/LHR/startdates/'+startdates+'/enddates/'+enddates+'.json').
+  $http.get('http://localhost:8889/app_dev.php/api/tos/'+maverick.destinations[0].code+'/froms/LHR/startdates/'+startdates+'/enddates/'+enddates+'.json').
   success(function(data, status, headers, config) {
     $scope.flights = data;
-    maverick.destinations[0].price = data['itineraries']['total']
+    maverick.destinations[0].price = data['itineraries'][0]['total']
   }).
   error(function(data, status, headers, config) {
     // log error
