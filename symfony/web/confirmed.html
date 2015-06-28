@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="flightApp">
+<html>
 <head>
   <base href="/" />
   <!-- Latest compiled and minified CSS -->
@@ -44,44 +44,18 @@ margin-top: 0.5%;
     font-size: -webkit-xxx-large;
 color: rgba(255, 255, 255, 1);
   }*/
-  .form-container {
-    background-color: white;
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
-  .image-container {
-        height: 33%;
-    background-repeat: no-repeat;
-    background-position: center;
+  .cart {
+    background-image: url('images/confirm.png');
     background-size: cover;
+    background-repeat: no-repeat;
+    height: 283px;
+  }
+  .control-label {
     border-bottom: solid 1px;
-border-color: lightgray;
-  }
-  .input-daterange {
-    margin-top: 20%;
-  }
-  form {
-    text-align: center;
-  }
-  .submit-btn {
-    margin-top: 30%;
-  }
-  .stops {
-    width: 80%;
+    border-color: red;
   }
   .price {
-    float:right;
-    width: 20%;
-  }
-  .title {
-    font-size: 2.5rem;
-    padding-top: 10%;
-margin-left: 5%;
-color: white;
-  }
-  .radio {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    text-align: right;
   }
   </style>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -90,33 +64,39 @@ color: white;
 </head>
 
 <body>
-  <div class="row image-container" ng-controller='flightController as flights'  back-img='{{ toImage }}'>
-  <div class="row navigation-row">
-    <div class="col-xs-1 navigation-container">
-            <a href="maverick.html?start={{ start }}&amp;end={{ end }}" target="_self">
-    <span class="mdi-navigation-arrow-back">
+  <div>
+  <div class="row">
+    <div class="col-xs-12 cart">
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <p style="text-align: center;padding-top:10%;">
+        Congratulations, you're now ready for your next adventure!<br><br>
+
+You will soon receive both text and email confirmations with your details.<br><br>
+
+You can easily share your trip with other mavericks over text so they can join you on journey.<br>
+</p>
+      <div style="text-align: center">
+        <form>
+          <div class="form-group">
+            <div class="input-group">
+    <span class="input-group-addon">To:</span>
+    <input type="text" class="form-control" style="margin-top: 5%;">
+    <span class="input-group-btn" style="margin-left:10%;">
+        <button class="btn btn-default btn-fab btn-raised mdi-social-person-add" style="border-radius:100%;" type="button"></button>
     </span>
-    </a>
-  </div>
-  </div>
-  <div ng-controller='flightController as flights'>
-  <p class='title'>{{ from }} to {{ to }}</p>
 </div>
-</div>
-<div class="row shadow-z-3"  ng-controller='flightController as flights'>
-  <div class="col-xs-12">
-    <div class="sample2">
-  <div class="radio radio-primary" ng-repeat="itinerary in flights.itineraries">
-    <label>
-      <input type="radio" name="sample2" value="option1" checked="">
-      <span class="circle"></span>
-      <span class="check"></span>
-      operated by {{itinerary.fragments[0].airline}} with {{itinerary.fragments.length-1}} stop(s)
-    </label>
-          <span class="price">{{itinerary.curr}} {{itinerary.total}}</span>
+          </div>
+          <form method="post" action="/api/sms/447788355872/budgets/500/starts/2015-06-28/ends/2015-07-10/destinations/GDC.{_format}">
+      <button type="submit" class="btn btn-material-green submit-btn shadow-z-2">Share itinerary</button><br>
+        <a href="maverick.html?budget=500&amp;start=2015-06-28&amp;end=2015-07-10" class="btn btn-material-deep-orange submit-btn shadow-z-2">Continue Exploring</a>
+      </form>
+    </div>
   </div>
-</div>
   </div>
+
 </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -133,14 +113,6 @@ color: white;
     // This command is used to initialize some elements and make them work properly
     $.material.init();
   });
-  </script>
-
-  <script>
-  $('.input-daterange').datepicker({
-    autoclose: true
-  });
-  //$('#start').val(new Date().toString('MM/dd/yyyy'));
-  //$('#end').val(new Date.today().add(5).day().toString('MM/dd/yyyy'));
   </script>
 </body>
 </html>

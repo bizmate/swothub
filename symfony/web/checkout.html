@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="flightApp">
+<html>
 <head>
   <base href="/" />
   <!-- Latest compiled and minified CSS -->
@@ -44,44 +44,18 @@ margin-top: 0.5%;
     font-size: -webkit-xxx-large;
 color: rgba(255, 255, 255, 1);
   }*/
-  .form-container {
-    background-color: white;
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
-  .image-container {
-        height: 33%;
-    background-repeat: no-repeat;
-    background-position: center;
+  .cart {
+    background-image: url('images/cart.png');
     background-size: cover;
+    background-repeat: no-repeat;
+    height: 110px;
+  }
+  .control-label {
     border-bottom: solid 1px;
-border-color: lightgray;
-  }
-  .input-daterange {
-    margin-top: 20%;
-  }
-  form {
-    text-align: center;
-  }
-  .submit-btn {
-    margin-top: 30%;
-  }
-  .stops {
-    width: 80%;
+    border-color: red;
   }
   .price {
-    float:right;
-    width: 20%;
-  }
-  .title {
-    font-size: 2.5rem;
-    padding-top: 10%;
-margin-left: 5%;
-color: white;
-  }
-  .radio {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    text-align: right;
   }
   </style>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -90,33 +64,48 @@ color: white;
 </head>
 
 <body>
-  <div class="row image-container" ng-controller='flightController as flights'  back-img='{{ toImage }}'>
-  <div class="row navigation-row">
-    <div class="col-xs-1 navigation-container">
-            <a href="maverick.html?start={{ start }}&amp;end={{ end }}" target="_self">
-    <span class="mdi-navigation-arrow-back">
-    </span>
-    </a>
+  <div>
+  <div class="row">
+    <div class="col-xs-12 cart">
   </div>
   </div>
-  <div ng-controller='flightController as flights'>
-  <p class='title'>{{ from }} to {{ to }}</p>
-</div>
-</div>
-<div class="row shadow-z-3"  ng-controller='flightController as flights'>
-  <div class="col-xs-12">
-    <div class="sample2">
-  <div class="radio radio-primary" ng-repeat="itinerary in flights.itineraries">
-    <label>
-      <input type="radio" name="sample2" value="option1" checked="">
-      <span class="circle"></span>
-      <span class="check"></span>
-      operated by {{itinerary.fragments[0].airline}} with {{itinerary.fragments.length-1}} stop(s)
-    </label>
-          <span class="price">{{itinerary.curr}} {{itinerary.total}}</span>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <label class="col-xs-12 control-label">Transport:</label>
+      <p>British Airways<br>
+        LON to BCN, 30th June 15<br>
+        3.00pm - 5.00pm
+      </p>
+      <p class='price'>
+        &pound; 180.00
+      </p>
+      <label class="col-xs-12 control-label">Activities:</label>
+      <p>Sky Diving<br>
+        1st July 15<br>
+        8.00am - 4.00pm
+      </p>
+      <p class='price'>
+        &pound; 150.00
+      </p>
+      <label class="col-xs-12 control-label">Accommodation:</label>
+      <p><a href="javascript:void(0)" class="btn btn-success btn-fab btn-raised mdi-action-grade"></a>
+        <a href="javascript:void(0)" class="btn btn-success btn-fab btn-raised mdi-action-grade"></a>
+        <a href="javascript:void(0)" class="btn btn-success btn-fab btn-raised mdi-action-grade"></a>
+        <a href="javascript:void(0)" class="btn btn-default btn-fab btn-raised mdi-action-grade"></a>
+        <a href="javascript:void(0)" class="btn btn-default btn-fab btn-raised mdi-action-grade"></a><br><br>
+        Hilton<br>
+        Avenida Diagonal, 589-591, Barcelona, Spain<br>
+        30th June 15 - 2nd July 2015
+      </p>
+      <p class='price'>
+        &pound; 450.00
+      </p>
+      <div style="text-align: center">
+      <a href="confirmed.html" class="btn btn-material-green submit-btn shadow-z-2">Confirm</a>
+    </div>
+    </div>
   </div>
-</div>
-  </div>
+
 </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -133,14 +122,6 @@ color: white;
     // This command is used to initialize some elements and make them work properly
     $.material.init();
   });
-  </script>
-
-  <script>
-  $('.input-daterange').datepicker({
-    autoclose: true
-  });
-  //$('#start').val(new Date().toString('MM/dd/yyyy'));
-  //$('#end').val(new Date.today().add(5).day().toString('MM/dd/yyyy'));
   </script>
 </body>
 </html>

@@ -10,7 +10,6 @@
 <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css" rel="stylesheet">
 <style>
 html {
   height: 100%;
@@ -93,21 +92,20 @@ border-color: lightblue;
   margin-top: 1%;
 }
 </style>
-<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
 <script src="maverick.js"></script>
 </head>
 
 <body >
-  <div ng-controller='MaverickController as maverick'>
+  <div id="controller" ng-controller='MaverickController as maverick'>
     <div id='destination-slider' class='swipe'>
       <div class='swipe-wrap'>
         <div ng-repeat="destination in destinations">
-          <div class='image-container' back-img='{{"./images/destination/berlin.jpg"}}'>
-            <a href="flight.html?from=LHR&amp;to=FCO">
+          <div class='image-container' back-img='{{"./images/destination/rome.jpg"}}'>
+            <a href="flight.html?from=LHR&amp;to=FCO&amp;start={{ start }}&amp;end={{ end }}" target="_self">
               <span class='link-span'></span>
               <p class='title'>{{ destination.name }}</p>
-              <p class='price'>{{ destination.total }} &pound;</p>
+              <p class='price'>&pound; {{ destination.total }}</p>
             </a>
           </div>
         </div>
@@ -117,10 +115,10 @@ border-color: lightblue;
       <div class='swipe-wrap'>
         <div ng-repeat="experience in experiences">
           <div class='image-container' back-img='{{experience.pictures["1200x800"]}}'>
-            <a href="flight.html?from=LHR&amp;to=FCO">
+            <a href="flight.html?from=LHR&amp;to=FCO" target="_self">
               <span class='link-span'></span>
               <p class='title'>{{ experience.title }}</p>
-              <p class='price'>{{ experience.price }} &pound;</p>
+              <p class='price'>&pound; {{ experience.price }}</p>
             </a>
           </div>
         </div>
@@ -130,10 +128,10 @@ border-color: lightblue;
       <div class='swipe-wrap'>
         <div ng-repeat="accommodation in accommodations">
           <div class='image-container' back-img='{{"./images/accommodation/premium.jpg"}}'>
-            <a href="flight.html?from=LHR&amp;to=FCO">
+            <a href="flight.html?from=LHR&amp;to=FCO" target="_self">
               <span class='link-span'></span>
               <p class='title'>{{ accommodation.hotelName }}</p>
-              <p class='price'>{{ accommodation.price }} &pound;</p>
+              <p class='price'>&pound; {{ accommodation.price }}</p>
             </a>
           </div>
         </div>
@@ -142,7 +140,7 @@ border-color: lightblue;
     <div class="row price-row">
       <div class="col-xs-12 form-container">
         <div class="price-container">
-          <button type="submit" class="btn submit-btn">{{ destinations[0].price + experiences[0].price + accommodations[0].price }} &pound;</button>
+          <a href="checkout.html" target="_self" class="btn submit-btn">1-click buy for &pound; {{ destinations[0].total + experiences[0].price + accommodations[0].price }}</a>
         </div>
       </div>
     </div>
@@ -155,7 +153,9 @@ border-color: lightblue;
       continuous: true,
       disableScroll: false,
       stopPropagation: false,
-      callback: function(index, elem) {},
+      callback: function(index, elem) {
+        //angular.element(document.getElementById('controller')).scope().changedDestination();
+      },
       transitionEnd: function(index, elem) {}
     });
     window.swipeExperience = new Swipe(document.getElementById('experience-slider'), {
