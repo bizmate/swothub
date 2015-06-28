@@ -5,8 +5,10 @@ var app = angular.module('flightApp', [], function($locationProvider) {
   });
 });
 
-app.controller('flightController', function($scope, $http) {
-  $http.get('http://destination.bizmate.space/api/tos/VIE/froms/LHR/startdates/2015-07-10/enddates/2015-07-11.json').
+app.controller('flightController', function($scope, $http, $location) {
+  var from = $scope.from = $location.search()['from']
+  var to = $scope.to = $location.search()['to']
+  $http.get('http://localhost:8889/api/tos/'+to+'/froms/'+from+'/startdates/2015-07-10/enddates/2015-07-11.json').
     success(function(data, status, headers, config) {
       $scope.flights = data;
     }).

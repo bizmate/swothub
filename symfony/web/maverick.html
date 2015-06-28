@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="maverickApp">
 <head>
-  <base href="/destinationhack/" />
+  <base href="/" />
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -111,14 +111,14 @@ border-color: lightblue;
             </a>
           </div>
           </div>
-        <a href="flight.html">
+        <a href="flight.html?from=LHR&amp;to=TXL">
           <span class='link-span'></span>
           <p class='title'>{{ maverick.destinations[0].name }}</p>
           <p class='price'>{{ maverick.destinations[0].price }} &pound;</p>
         </a>
         </div>
         <div class='image-container' back-img='{{maverick.destinations[1].bgURL}}'>
-          <a href="flight.html">
+          <a href="flight.html?from=LHR&amp;to=VIE">
             <span class='link-span'></span>
           <p class='title'>{{ maverick.destinations[1].name }}</p>
           <p class='price'>{{ maverick.destinations[1].price }} &pound;</p>
