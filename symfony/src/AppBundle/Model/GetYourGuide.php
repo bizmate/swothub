@@ -11,7 +11,7 @@ class GetYourGuide
 
     private $default_params = array(
             'cnt_language' => 'en',
-            'currency' => 'EUR'
+            'currency' => 'GBP'
         );
 
     /**
