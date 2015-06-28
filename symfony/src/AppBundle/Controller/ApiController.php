@@ -72,4 +72,10 @@ class ApiController extends FOSRestController
         $gyg = $this->container->get('getyourguide');
         return $gyg->tour($tour_id);
     }
+
+    public function getCitynameAction($airportCode)
+    {
+        $sabreClient = $this->container->get('sabre');
+        return $sabreClient->resolveCityName($airportCode);
+    }
 }
