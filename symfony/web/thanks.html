@@ -55,31 +55,13 @@
     </div>
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1">
-        <p style="text-align: center;padding-top:10%;">
-          Congratulations, you're now ready for your next adventure!<br><br>
+        <h2 style="text-align: center;padding-top:10%;">
+          Thanks for sharing!
+          <a href="maverick.html?budget=500&amp;start=2015-06-28&amp;end=2015-07-10" class="btn btn-material-green submit-btn shadow-z-2" style="margin-top: 10%;">Continue Exploring</a>
+        </h2>
 
-          You will soon receive both text and email confirmations with your details.<br><br>
-
-          You can easily share your trip with other mavericks over text so they can join you on journey.<br>
-        </p>
-        <div style="text-align: center">
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">To:</span>
-                <input id="number" type="text" class="form-control" style="margin-top: 5%;">
-                <span class="input-group-btn" style="margin-left:10%;">
-                  <button class="btn btn-default btn-fab btn-raised mdi-social-person-add" style="border-radius:100%;" type="button"></button>
-                </span>
-              </div>
-            </div>
-            <form id="messageForm" method="post" action="">
-              <a id="share" class="btn btn-material-green submit-btn shadow-z-2" href="thanks.html">Share itinerary</a><br>
-            </form>
-              <a href="maverick.html?budget=500&amp;start=2015-06-28&amp;end=2015-07-10" class="btn btn-material-deep-orange submit-btn shadow-z-2">Continue Exploring</a>
-          </div>
-        </div>
       </div>
-
+</div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -96,24 +78,6 @@
       // This command is used to initialize some elements and make them work properly
       $.material.init();
 
-      $('.link').click(function(e){
-
-var href = $('#share').attr('href');
-e.preventDefault();
-//do ajax for saving the data-- refer jquery ajax
-
-$.ajax({
-      url:'http://destination.bizmate.space/api/sms/44'+$('#number').val()+'/budgets/500/starts/2015-06-28/ends/2015-07-10/destinations/GDC.json',
-      type:'post',
-      data: '',
-     success:funtion(msg){ //return a value ok if form saved or fail if form not saved
-    if(msg == 'ok'){
-    location.href = href; //just redirect
-      }
-     }
-
-});
-});
     });
     /*$("#messageForm").submit(function(){// Let myform is id of your form
       $(this).attr('action','http://destination.bizmate.space/api/sms/44'+$('#number').val()+'/budgets/500/starts/2015-06-28/ends/2015-07-10/destinations/GDC.json');
