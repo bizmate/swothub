@@ -9,6 +9,7 @@ use AppBundle\Model\Competitors;
 use AppBundle\Model\SabreHotels;
 use AppBundle\Model\SabreOath2;
 use AppBundle\Model\TwilioAdapter;
+use AppBundle\Model\Bitly;
 
 
 
@@ -112,6 +113,19 @@ class DevController extends Controller
     {
         $twilioClient = new TwilioAdapter();
         $result = $twilioClient->sendMsg('+4475982491') ;
+        return array(
+            'result' => $result
+        );
+    }
+
+    /**
+     * @Route("/bitlytest")
+     * @Template()
+     */
+    public function bitlytestAction()
+    {
+        $bitlyClient = new Bitly();
+        $result = $bitlyClient->getShortUrl('http://destination.bizmate.space/index.html');
         return array(
             'result' => $result
         );
