@@ -9,21 +9,21 @@ app.controller('flightController', function($scope, $http, $location) {
   var to = $location.search()['to']
   var startdates = $scope.start = $location.search()['start']
   var enddates = $scope.end = $location.search()['end']
-  $http.get('./app_dev.php/api/tos/'+to+'/froms/'+from+'/startdates/'+startdates+'/enddates/'+enddates+'.json').
+  $http.get('api/tos/'+to+'/froms/'+from+'/startdates/'+startdates+'/enddates/'+enddates+'.json').
     success(function(data, status, headers, config) {
       $scope.flights = data;
     }).
     error(function(data, status, headers, config) {
       // log error
     });
-    $http.get('./app_dev.php/api/citynames/'+from+'.json').
+    $http.get('api/citynames/'+from+'.json').
       success(function(data, status, headers, config) {
         $scope.from = data;
       }).
       error(function(data, status, headers, config) {
         // log error
       });
-      $http.get('./app_dev.php/api/citynames/'+to+'.json').
+      $http.get('api/citynames/'+to+'.json').
         success(function(data, status, headers, config) {
           $scope.to = data;
             $scope.toImage = './images/destination/'+data+'.jpg';

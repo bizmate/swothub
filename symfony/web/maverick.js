@@ -15,7 +15,7 @@ app.controller('MaverickController', function($scope, $http, $location) {
       $scope.accommodations = data['hotels'];
       $scope.destinations = data['itineraries'];
       var humanName;
-      $http.get('app_dev.php/api/citynames/'+'FCO'+'.json').
+      $http.get('api/citynames/'+'FCO'+'.json').
         success(function(data, status, headers, config) {
           $scope.destinations.forEach(function(entry) {
             entry.name= data;
@@ -34,7 +34,7 @@ app.controller('MaverickController', function($scope, $http, $location) {
           $scope.experiences = data['local_offers'];
           $scope.accommodations = data['hotels'];
           var humanName;
-          $http.get('app_dev.php/api/citynames/'+'FCO'+'.json').
+          $http.get('api/citynames/'+'FCO'+'.json').
             success(function(data, status, headers, config) {
               $scope.destinations.forEach(function(entry) {
                 entry.name= data;
