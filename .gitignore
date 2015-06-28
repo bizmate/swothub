@@ -3,3 +3,4 @@
 /.vagrant
 index.html
 /.idea
+symfony/app/config/parameters.yml

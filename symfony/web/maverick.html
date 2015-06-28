@@ -102,74 +102,51 @@ border-color: lightblue;
   <div ng-controller='MaverickController as maverick'>
     <div id='destination-slider' class='swipe'>
       <div class='swipe-wrap'>
-        <div class='image-container' back-img='{{maverick.destinations[0].bgURL}}'>
-          <div class="navigation-row">
-            <div class="navigation-container">
-                    <a href="index.html">
-            <span class="mdi-navigation-arrow-back">
-            </span>
+        <div ng-repeat="destination in destinations">
+          <div class='image-container' back-img='{{"./images/destination/berlin.jpg"}}'>
+            <a href="flight.html?from=LHR&amp;to=FCO">
+              <span class='link-span'></span>
+              <p class='title'>{{ destination.name }}</p>
+              <p class='price'>{{ destination.total }} &pound;</p>
             </a>
           </div>
-          </div>
-        <a href="flight.html?from=LHR&amp;to=TXL">
-          <span class='link-span'></span>
-          <p class='title'>{{ maverick.destinations[0].name }}</p>
-          <p class='price'>{{ maverick.destinations[0].price }} &pound;</p>
-        </a>
-        </div>
-        <div class='image-container' back-img='{{maverick.destinations[1].bgURL}}'>
-          <a href="flight.html?from=LHR&amp;to=VIE">
-            <span class='link-span'></span>
-          <p class='title'>{{ maverick.destinations[1].name }}</p>
-          <p class='price'>{{ maverick.destinations[1].price }} &pound;</p>
-        </a>
         </div>
       </div>
     </div>
     <div id='experience-slider' class='swipe'>
       <div class='swipe-wrap'>
-        <div class='image-container' back-img='{{maverick.experiences[0].bgURL}}'>
-          <a href="experience.html">
-            <span class='link-span'></span>
-          <p class='title'>{{ maverick.experiences[0].name }}</p>
-          <p class='price'>{{ maverick.experiences[0].price }} &pound;</p>
-        </a>
-        </div>
-        <div class='image-container' back-img='{{maverick.experiences[1].bgURL}}'>
-          <a href="experience.html">
-            <span class='link-span'></span>
-          <p class='title'>{{ maverick.experiences[1].name }}</p>
-          <p class='price'>{{ maverick.experiences[1].price }} &pound;</p>
-        </a>
+        <div ng-repeat="experience in experiences">
+          <div class='image-container' back-img='{{experience.pictures["1200x800"]}}'>
+            <a href="flight.html?from=LHR&amp;to=FCO">
+              <span class='link-span'></span>
+              <p class='title'>{{ experience.title }}</p>
+              <p class='price'>{{ experience.price }} &pound;</p>
+            </a>
+          </div>
         </div>
       </div>
     </div>
     <div id='accommodation-slider' class='swipe'>
       <div class='swipe-wrap'>
-        <div class='image-container' back-img='{{maverick.accommodations[0].bgURL}}'>
-          <a href="accommodation.html">
-            <span class='link-span'></span>
-          <p class='title'>{{ maverick.accommodations[0].name }}</p>
-          <p class='price'>{{ maverick.accommodations[0].price }} &pound; per night</p>
-        </a>
-        </div>
-        <div class='image-container' back-img='{{maverick.accommodations[1].bgURL}}'>
-          <a href="accommodation.html">
-            <span class='link-span'></span>
-          <p class='title'>{{ maverick.accommodations[1].name }}</p>
-          <p class='price'>{{ maverick.accommodations[1].price }} &pound; per night</p>
-        </a>
-        </div>
+        <div ng-repeat="accommodation in accommodations">
+          <div class='image-container' back-img='{{"./images/accommodation/premium.jpg"}}'>
+            <a href="flight.html?from=LHR&amp;to=FCO">
+              <span class='link-span'></span>
+              <p class='title'>{{ accommodation.hotelName }}</p>
+              <p class='price'>{{ accommodation.price }} &pound;</p>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="row price-row">
-        <div class="col-xs-12 form-container">
-      <div class="price-container">
-        <button type="submit" class="btn submit-btn">{{ maverick.destinations[0].price + maverick.experiences[0].price + maverick.accommodations[0].price }} &pound;</button>
+    </div>
+    <div class="row price-row">
+      <div class="col-xs-12 form-container">
+        <div class="price-container">
+          <button type="submit" class="btn submit-btn">{{ destinations[0].price + experiences[0].price + accommodations[0].price }} &pound;</button>
+        </div>
       </div>
     </div>
-    </div>
-    </div>
+  </div>
     <script>
     window.swipeDestination = new Swipe(document.getElementById('destination-slider'), {
       startSlide: 0,
