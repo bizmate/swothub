@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Model\Competitors;
 use AppBundle\Model\SabreHotels;
 use AppBundle\Model\SabreOath2;
+use AppBundle\Model\TwilioAdapter;
 
 
 
@@ -98,6 +99,19 @@ class DevController extends Controller
     {
         $hotelClient = new SabreHotels();
         $result = $hotelClient->getHotels('FCO', '2015-07-10','2015-07-12')  ;
+        return array(
+            'result' => $result
+        );
+    }
+
+    /**
+     * @Route("/twiliotest")
+     * @Template()
+     */
+    public function twiliotestAction()
+    {
+        $twilioClient = new TwilioAdapter();
+        $result = $twilioClient->sendMsg('+4475982491') ;
         return array(
             'result' => $result
         );
