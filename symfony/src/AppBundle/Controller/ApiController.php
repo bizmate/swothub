@@ -57,5 +57,17 @@ class ApiController extends FOSRestController
         return $response ;
     }
 
+    public function getCitytoursAction($cityname)
+    {
+        $gyg = $this->container->get('getyourguide');
+
+        return $gyg->tours(['location' => $cityname]);
+    }
+
+    public function getTourAction($tour_id)
+    {
+        $gyg = $this->container->get('getyourguide');
+        return $gyg->tour($tour_id);
+    }
 
 }

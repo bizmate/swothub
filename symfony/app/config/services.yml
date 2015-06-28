@@ -17,3 +17,6 @@ services:
     sabre:
         class: AppBundle\Model\Sabre
         arguments:    ["@sabreauth"]
+    getyourguide:
+        class: AppBundle\Model\GetYourGuide
+        arguments:    [""]
