@@ -14,6 +14,26 @@ class Sabre {
         $this->sabreAuth2 = $sabreAuth2;
     }
 
+    public function resolveCityName($airport)
+    {
+        $url = 'http://geoservices.sabre.com/autocomplete/v1/select?query='.$airport.'&category=AIR&clientId=geo';
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_URL,  $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $response = curl_exec($ch);
+
+        if(!$response){
+            echo 'Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch);die;
+        }
+
+        curl_close($ch);
+
+        $city = json_decode($response, true)["grouped"]["category:AIR"]["doclist"]["docs"][0]["city"];
+        return $city;
+    }
+
     public function getItinerary($to, $from, $startdate, $enddate)
     {
         //return null;
