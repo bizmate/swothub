@@ -6,8 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Model\Competitors;
-//use AppBundle\Model\CpsAdapter;
+use AppBundle\Model\SabreHotels;
 use AppBundle\Model\SabreOath2;
+
 
 
 
@@ -83,6 +84,20 @@ class DevController extends Controller
 
         $result = $client->getApiKey();
 
+        return array(
+            'result' => $result
+        );
+    }
+
+
+    /**
+     * @Route("/hotelstest")
+     * @Template()
+     */
+    public function hotelstestAction()
+    {
+        $hotelClient = new SabreHotels();
+        $result = $hotelClient->getHotels('FCO', '2015-07-10','2015-07-12')  ;
         return array(
             'result' => $result
         );
