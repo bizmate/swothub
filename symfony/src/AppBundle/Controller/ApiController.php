@@ -10,6 +10,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use AppBundle\Model\News;
 use AppBundle\Model\ItineraryResponse;
 use AppBundle\Model\SabreHotels;
+use AppBundle\Model\TwilioAdapter;
 
 
 class ApiController extends FOSRestController
@@ -77,5 +78,25 @@ class ApiController extends FOSRestController
     {
         $sabreClient = $this->container->get('sabre');
         return $sabreClient->resolveCityName($airportCode);
+    }
+
+    public function postSmsAction($phoneNumber)
+    {
+        $mobilePattern = '447\d\d\d\d\d\d\d\d';
+
+        $result = null;
+
+        //echo $phoneNumber . ' -> ' . preg_match( $mobilePattern , '+'  .$phoneNumber); die;
+
+        //if(preg_match( $mobilePattern , '+'  .$phoneNumber) )
+            if(true )
+        {
+            $twilioClient = new TwilioAdapter();
+            $result = $twilioClient->sendMsg('+'  .$phoneNumber) ;
+        }
+
+        return array(
+            'result' => $result
+        );
     }
 }
