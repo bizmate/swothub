@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use AppBundle\Model\News;
+use AppBundle\Model\ItineraryResponse;
 
 
 class ApiController extends FOSRestController
@@ -45,16 +46,9 @@ class ApiController extends FOSRestController
     public function getToFromStartdateEnddateAction($to, $from, $startdate, $enddate)
     {
         $sabreClient = $this->container->get('sabre');
+        $itineraries = $sabreClient->getItinerary($to, $from, $startdate, $enddate);
 
-        $response = array(
-            'itineraries' => null ,
-            'hotels' => null,
-            'localoffers' => null
-        );
-
-        //$itineraries = $sabreClient->getItinerary($to, $from, $startdate, $enddate);
-
-        return $response ;
+        return  new ItineraryResponse($itineraries, null, null);
     }
 
 
