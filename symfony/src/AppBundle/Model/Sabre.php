@@ -16,6 +16,8 @@ class Sabre {
 
     public function getItinerary($to, $from, $startdate, $enddate)
     {
+        //return null;
+
         $action = 'shop/flights';
 
         $urlParams =[
@@ -26,12 +28,58 @@ class Sabre {
         ];
 
         $extraVars =
-            'onlineitinerariesonly=N&limit=10&offset=1&eticketsonly=N&sortby=totalfare&order=asc&sortby2=departuretime&order2=asc&pointofsalecountry=GB';
+            'onlineitinerariesonly=N&limit=5&offset=1&eticketsonly=N&sortby=totalfare&order=asc&sortby2=departuretime&order2=asc&pointofsalecountry=GB';
 
         $callUrl = self::BASE_URI . $action . '?' . http_build_query($urlParams) . '&' . $extraVars;
-        //echo $callUrl;die;
+
+        $response = $this->curlGet($callUrl);
+        //$response = $this->getThroughGuzzle($callUrl);
 
 
+        if($response = json_decode($response)){
+
+            $itn = [];
+            foreach($response->PricedItineraries as $itinerary){
+
+                $fragments = [];
+
+                foreach(
+                    $itinerary->AirItinerary->OriginDestinationOptions->OriginDestinationOption as $frag
+                )
+                {
+                    //echo json_encode($frag->FlightSegment);die;
+                    //echo count($frag->FlightSegment);die;
+
+                    foreach($frag->FlightSegment as $subFrag){
+                        //echo json_encode($subFrag);die;
+                        $fragments[] = [
+                            'departAirport' => $subFrag->DepartureAirport->LocationCode,
+                            'arrAirport' => $subFrag->ArrivalAirport->LocationCode,
+                            'airline' => $subFrag->MarketingAirline->Code,
+                            'flighN' => $subFrag->FlightNumber,
+                            'departTime' => $subFrag->DepartureDateTime,
+                            'arrTime' => $subFrag->ArrivalDateTime,
+                        ];
+                    }
+
+                }
+                //echo json_encode($itinerary->AirItineraryPricingInfo->PTC_FareBreakdowns->PTC_FareBreakdown->PassengerFare->TotalFare);die;
+
+                $itn[] = [
+                    'total' => $itinerary->AirItineraryPricingInfo->PTC_FareBreakdowns->PTC_FareBreakdown->PassengerFare->TotalFare->Amount ,
+                    'curr' => $itinerary->AirItineraryPricingInfo->PTC_FareBreakdowns->PTC_FareBreakdown->PassengerFare->TotalFare->CurrencyCode ,
+                    'type' => $itinerary->AirItinerary->DirectionInd ,
+                    'fragments' => $fragments
+                ];
+            }
+            return $itn;
+        }
+
+        return null;
+    }
+
+    private function getThroughGuzzle($callUrl)
+    {
         $response = $this->getClient()->get(
             $callUrl,
             [
@@ -42,26 +90,40 @@ class Sabre {
             ]
         );
 
-        //var_dump($response->getBody()->getContents());die;
-
         if($response->getStatusCode() == 200){
-            var_dump($response->json() ); die;
             $body = $response->getBody();
-
 
             if($body instanceof Stream)
             {
                 $contents = $body->getContents();
 
-                //echo $contents; die;
                 return json_decode( trim($contents) );
-                //return $contents ;
             }
             return json_decode($body);
         }
+    }
 
-        return null;
+    private function curlGet( $url)
+    {
+        $ch = curl_init();
 
+        curl_setopt($ch,CURLOPT_URL,  $url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+        curl_setopt($ch, CURLOPT_HTTPHEADER,     array(
+            'Authorization: Bearer '. $this->sabreAuth2->getApiKey(),
+            'Accept'     => 'application/json'
+        ));
+
+        $response = curl_exec($ch);
+
+        if(!$response){
+            echo 'Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch);die;
+        }
+
+        curl_close($ch);
+
+        return $response;
     }
 
     private function getClient()
