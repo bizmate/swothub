@@ -46,9 +46,14 @@ class ApiController extends FOSRestController
     public function getToFromStartdateEnddateAction($to, $from, $startdate, $enddate)
     {
         $sabreClient = $this->container->get('sabre');
+        $gyg = $this->container->get('getyourguide');
+
         $itineraries = $sabreClient->getItinerary($to, $from, $startdate, $enddate);
 
-        return  new ItineraryResponse($itineraries, null, null);
+        $destination = $sabreClient->resolveCityName($to);
+        $activities = $gyg->tours(['location' => $destination]);
+
+        return new ItineraryResponse($itineraries, null, $activities);
     }
 
     public function getCitytoursAction($cityname)
@@ -63,5 +68,4 @@ class ApiController extends FOSRestController
         $gyg = $this->container->get('getyourguide');
         return $gyg->tour($tour_id);
     }
-
 }
