@@ -9,7 +9,7 @@ app.controller('MaverickController', function($scope, $http, $location) {
   var startdates = $scope.start = $location.search()['start']
   var enddates = $scope.end = $location.search()['end']
 
-  $http.get('app_dev.php/api/tos/'+'FCO'+'/froms/LHR/startdates/'+startdates+'/enddates/'+enddates+'.json').
+  $http.get('api/tos/'+'FCO'+'/froms/LHR/startdates/'+startdates+'/enddates/'+enddates+'.json').
     success(function(data, status, headers, config) {
       $scope.experiences = data['local_offers'];
       $scope.accommodations = data['hotels'];
