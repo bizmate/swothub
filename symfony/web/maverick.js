@@ -11,7 +11,6 @@ app.controller('MaverickController', function($scope, $http, $location) {
 
   $http.get('api/tos/'+'FCO'+'/froms/LHR/startdates/'+startdates+'/enddates/'+enddates+'.json').
     success(function(data, status, headers, config) {
-      $scope.flights = data;
       $scope.experiences = data['local_offers'];
       $scope.accommodations = data['hotels'];
       $scope.destinations = data['itineraries'];
@@ -21,12 +20,6 @@ app.controller('MaverickController', function($scope, $http, $location) {
     error(function(data, status, headers, config) {
       // log error
     });
-
-  $scope.loadDestinations = function() {
-    $scope.destinations = [
-      {name:'Berlin', url: './images/destination/berlin.png', price: 500},
-      {name:'Rio de Janiero', url:'./images/destination/rio.png', price: 600}];
-    };
   });
 
   app.directive('backImg', function(){
