@@ -100,20 +100,18 @@ border-color: lightblue;
   <div id="controller" ng-controller='MaverickController as maverick'>
     <div id='destination-slider' class='swipe'>
       <div class='swipe-wrap'>
-        <div ng-repeat="destination in destinations">
-          <div class='image-container' back-img='{{"./images/destination/rome.jpg"}}'>
-            <a href="flight.html?from=LHR&amp;to=FCO&amp;start={{ start }}&amp;end={{ end }}" target="_self">
-              <span class='link-span'></span>
-              <p class='title'>{{ destination.name }}</p>
-              <p class='price'>&pound; {{ destination.total }}</p>
-            </a>
-          </div>
+        <div ng-repeat="destination in destinations" class='image-container' back-img='{{"./images/destination/rome.jpg"}}'>
+          <a href="flight.html?from=LHR&amp;to=FCO&amp;start={{ start }}&amp;end={{ end }}" target="_self">
+            <span class='link-span'></span>
+            <p class='title'>{{ destination.name }}</p>
+            <p class='price'>&pound; {{ destination.total }}</p>
+          </a>
         </div>
       </div>
     </div>
     <div id='experience-slider' class='swipe'>
       <div class='swipe-wrap'>
-        <div ng-repeat="experience in experiences">
+        <div ng-repeat="experience in experiences" ng-repeat="experience in experiences">
           <div class='image-container' back-img='{{experience.pictures["1200x800"]}}'>
             <a href="flight.html?from=LHR&amp;to=FCO" target="_self">
               <span class='link-span'></span>
@@ -126,14 +124,12 @@ border-color: lightblue;
     </div>
     <div id='accommodation-slider' class='swipe'>
       <div class='swipe-wrap'>
-        <div ng-repeat="accommodation in accommodations">
-          <div class='image-container' back-img='{{"./images/accommodation/premium.jpg"}}'>
-            <a href="flight.html?from=LHR&amp;to=FCO" target="_self">
-              <span class='link-span'></span>
-              <p class='title'>{{ accommodation.hotelName }}</p>
-              <p class='price'>&pound; {{ accommodation.price }}</p>
-            </a>
-          </div>
+        <div ng-repeat="accommodation in accommodations" class='image-container' back-img='{{"./images/accommodation/premium.jpg"}}'>
+          <a href="flight.html?from=LHR&amp;to=FCO" target="_self">
+            <span class='link-span'></span>
+            <p class='title'>{{ accommodation.hotelName }}</p>
+            <p class='price'>&pound; {{ accommodation.price }}</p>
+          </a>
         </div>
       </div>
     </div>
