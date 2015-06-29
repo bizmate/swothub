@@ -38,6 +38,16 @@ class SabreHotels {
         return $hotels;
     }
 
+    public function getHotels2($dest, $from, $to){
+        $url = "http://dev.jellyfishsurpriseparty.com/polygon/rates/$dest/$from/$to";
+
+        $response = $this->getClient()->get($url);
+s
+        $hotels = json_decode($response->getBody());
+
+        return $hotels;
+    }
+
     private function getClient()
     {
         return new GuzzleClient();

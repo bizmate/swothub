@@ -103,7 +103,7 @@ class GetYourGuide
         $options = $this->buildLocationParams($city);
 
         $url = $this->buildApiUri('locations', $options);
-        return json_decode($this->query($url))->data->locations[0]->location_id;
+        return @json_decode($this->query($url))->data->locations[0]->location_id;
     }
 
     private function buildApiUri($endpoint, $urlParams = array())

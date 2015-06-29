@@ -10,6 +10,7 @@ use AppBundle\Model\SabreHotels;
 use AppBundle\Model\SabreOath2;
 use AppBundle\Model\TwilioAdapter;
 use AppBundle\Model\Bitly;
+use AppBundle\Model\Giata;
 
 
 
@@ -106,6 +107,19 @@ class DevController extends Controller
     }
 
     /**
+     * @Route("/hotelstest2")
+     * @Template()
+     */
+    public function hotelstest2Action()
+    {
+        $hotelClient = new SabreHotels();
+        $result = $hotelClient->getHotels2('FCO', '2015-07-10','2015-07-12')  ;
+        return array(
+            'result' => $result
+        );
+    }
+
+    /**
      * @Route("/twiliotest")
      * @Template()
      */
@@ -126,6 +140,19 @@ class DevController extends Controller
     {
         $bitlyClient = new Bitly();
         $result = $bitlyClient->getShortUrl('http://destination.bizmate.space/index.html');
+        return array(
+            'result' => $result
+        );
+    }
+
+    /**
+     * @Route("/giatatest")
+     * @Template()
+     */
+    public function giatatestAction()
+    {
+        $giataClient = new Giata();
+        $result = $giataClient->getImg('YX', '88027');
         return array(
             'result' => $result
         );
