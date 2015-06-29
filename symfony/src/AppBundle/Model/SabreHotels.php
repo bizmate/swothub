@@ -42,7 +42,6 @@ class SabreHotels {
         $url = "http://dev.jellyfishsurpriseparty.com/polygon/rates/$dest/$from/$to";
 
         $response = $this->getClient()->get($url);
-s
         $hotels = json_decode($response->getBody());
 
         return $hotels;
