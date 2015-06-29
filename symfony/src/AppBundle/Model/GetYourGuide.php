@@ -21,7 +21,10 @@ class GetYourGuide
     public function tours($options = array())
     {
         $url = $this->buildApiUri('tours', $this->resolveLocationId($options));
-        $tours = json_decode($this->query($url))->data->tours;
+        $tours = @json_decode($this->query($url))->data->tours;
+        if(!isset($tours)){
+            return array();
+        }
 
         $this->storeTourIds($tours);
         $this->storeTourData($tours);
@@ -33,7 +36,12 @@ class GetYourGuide
     {
         $url = $this->buildApiUri('tours/'. $tour_id);
 
-        $tours = json_decode($this->query($url))->data->tours;
+        $tours = @json_decode($this->query($url))->data->tours;var_dump($tours);//die($tours);
+
+        if(!isset($tours)){
+            return array();
+        }
+
         $this->storeTourData($tours);
 
         return $this->tourData;
