@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+{% block body_container_main %}
+    <div class="wrapper style2">
+        <div class="title">Join News Letter</div>
+        <div class="container">
+
+            {{ form_start(subscribeForm) }}
+            {{ form_errors(subscribeForm) }}
+
+            <div class="row">
+                <div class="4u  -4u">
+                    {{ form_label(subscribeForm.email) }}
+                    {{ form_errors(subscribeForm.email) }}
+                    {{ form_widget(subscribeForm.email) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="4u  -4u">
+                    {{ form_label(subscribeForm.fname) }}
+                    {{ form_errors(subscribeForm.fname) }}
+                    {{ form_widget(subscribeForm.fname) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="4u -4u">
+                    {{ form_label(subscribeForm.lname) }}
+                    {{ form_errors(subscribeForm.lname) }}
+                    {{ form_widget(subscribeForm.lname) }}
+                </div>
+            </div>
+
+            <div class="margin-top">
+                {{ form_widget(subscribeForm.Join) }}
+            </div>
+            {{ form_end(subscribeForm) }}
+
+        </div>
+    </div>
+{% endblock %}
