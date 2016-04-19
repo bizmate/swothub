@@ -28,7 +28,10 @@ class Subscriber
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Type("email")
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
